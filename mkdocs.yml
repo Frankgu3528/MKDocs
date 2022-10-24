@@ -1,0 +1,8 @@
+site_name: My Docs
+theme:
+  name: material
+  palette:
+    accent: indigo
+nav:
+- Home: index.md
+- About: about.md
