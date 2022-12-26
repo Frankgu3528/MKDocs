@@ -13,7 +13,7 @@
     
     
       
-        <title>1 - Frankgu的笔记本</title>
+        <title>基数排序 - Frankgu的笔记本</title>
       
     
     
@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1
+              基数排序
             
           </span>
         </div>
@@ -579,6 +584,35 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    时间复杂度
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    特点
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    应用
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -591,15 +625,39 @@
                 
                   
 
-  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/1.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/基数排序.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>1</h1>
+  <h1>基数排序</h1>
 
-<p>东方红</p>
+<blockquote>
+<p>基数排序（英语：Radix sort）是一种非比较型的排序算法。
+有意思的是，在计算机发明之前就有了，有个老哥做成了机器，而快速排序等都是在计算机发明之后的。</p>
+</blockquote>
+<p>基数排序的工作原理是将待排序的元素拆分为 <span class="arithmatex">\(k\)</span> 个关键字（比较两个元素时，先比较第一关键字，如果相同再比较第二关键字……），然后先对第 <span class="arithmatex">\(k\)</span> 关键字进行稳定排序，再对第 <span class="arithmatex">\(k-1\)</span> 关键字进行稳定排序，再对第 <span class="arithmatex">\(k-2\)</span> 关键字进行稳定排序……最后对第一关键字进行稳定排序，这样就完成了对整个待排序序列的稳定排序。
+基数排序需要借助一种 <strong>稳定算法</strong> 完成内层对关键字的排序。</p>
+<div class="arithmatex">\[
+\begin{array}{ll}
+1 &amp; \textbf{Input. } \text{An array } A \text{ consisting of }n\text{ elements, where each element has }k\text{ keys.}\\
+2 &amp; \textbf{Output. } \text{Array }A\text{ will be sorted in nondecreasing order stably.} \\
+3 &amp; \textbf{Method. }  \\
+4 &amp; \textbf{for }i\gets k\textbf{ down to }1\\
+5 &amp; \qquad\text{sort }A\text{ into nondecreasing order by the }i\text{-th key stably}
+\end{array}
+\]</div>
+<h3 id="_1">时间复杂度</h3>
+<p>基数排序每一位的比较可以使用线性排序，比如[[桶排序]]或者计数排序，当然需要保证如计数排序的稳定性。每次排序时间复杂度O(n)，那么如果有k位，则时间复杂度为<span class="arithmatex">\(O(k*n)\)</span>,如果k不大比如手机号11位，那么时间复杂度就是O(n)</p>
+<h3 id="_2">特点</h3>
+<ul>
+<li>稳定排序</li>
+<li>不是基于比较</li>
+<li>注意是倒着往前。（从右往左）</li>
+</ul>
+<h3 id="_3">应用</h3>
+<p>比如要比较一组手机号码从小到大排列，可以比较手机号每一位大小，然后比较11次，手机号达到有序</p>
 
 
 

@@ -13,7 +13,7 @@
     
     
       
-        <title>1 - Frankgu的笔记本</title>
+        <title>归并排序 - Frankgu的笔记本</title>
       
     
     
@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1
+              归并排序
             
           </span>
         </div>
@@ -579,6 +584,28 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    伪代码
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    时间复杂度
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -591,15 +618,35 @@
                 
                   
 
-  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/1.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/归并排序.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>1</h1>
+  <h1>归并排序</h1>
 
-<p>东方红</p>
+<blockquote>
+<p>11-03 merge-sort</p>
+</blockquote>
+<h3 id="_1">伪代码</h3>
+<pre><code>def merge():
+    // 用来将两个有序数组合并
+def mergesort():
+    if (left&lt;right):
+        center = (left+right)/2;
+        mergesort(left,center);
+        mergesort(center+1,right);
+        merge(left,center,center+1,right); // 将上面两个有序数组合并
+</code></pre>
+<p>有点抽象的伪代码，看懂下面这个例子就会了。
+<img alt="image.png|475" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221226105839.png" /></p>
+<h3 id="_2">时间复杂度</h3>
+<blockquote>
+<p>归并排序基于分治思想将数组分段排序后合并，时间复杂度在最优、最坏与平均情况下均为<span class="arithmatex">\(\Theta(nlogn)\)</span> ，空间复杂度为<span class="arithmatex">\(\Theta(n)\)</span> 。归并排序可以只使用<span class="arithmatex">\(O(1)\)</span>的辅助空间，但为便捷通常使用与原数组等长的辅助数组。
+<span class="arithmatex">\(<span class="arithmatex">\(T(n) = 2T(\frac{n}{2})+\Theta(n)\)</span>\)</span>
+由主定理，复杂度为<span class="arithmatex">\(\Theta(nlogn)\)</span></p>
+</blockquote>
 
 
 

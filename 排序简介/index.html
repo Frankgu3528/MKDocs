@@ -13,7 +13,7 @@
     
     
       
-        <title>1 - Frankgu的笔记本</title>
+        <title>排序简介 - Frankgu的笔记本</title>
       
     
     
@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1
+              排序简介
             
           </span>
         </div>
@@ -254,12 +259,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -280,12 +287,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
       
       
       
@@ -334,12 +343,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_3" type="checkbox" id="__nav_3_1_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_3" type="checkbox" id="__nav_3_1_3" checked>
       
       
       
@@ -360,11 +371,48 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../%E6%8E%92%E5%BA%8F%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          排序简介
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         排序简介
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    稳定性
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -579,6 +627,21 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    稳定性
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -591,15 +654,25 @@
                 
                   
 
-  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/1.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/排序简介.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>1</h1>
+  <h1>排序简介</h1>
 
-<p>东方红</p>
+<h3 id="_1">稳定性</h3>
+<p>稳定性是指相等的元素经过排序之后相对顺序是否发生了改变。</p>
+<p>拥有稳定性这一特性的算法会让原本有相等键值的纪录维持相对次序，即如果一个排序算法是稳定的，当有两个相等键值的纪录R和S ，且在原本的列表中R出现在S之前，在排序过的列表中R也将会是在S之前。</p>
+<hr />
+<p>基于比较的排序算法已经不能比<span class="arithmatex">\(O(NlogN)\)</span>快了。
+这里有两个可以超越这个极限的排序，他们是<strong>非比较型</strong>的。
+<a href="../%E6%A1%B6%E6%8E%92%E5%BA%8F/">桶排序</a>    <a href="../%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/">基数排序</a></p>
+<p><a href="../%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/">插入排序</a> ---&gt; <a href="../%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/">希尔排序</a>
+<a href="../%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">归并排序</a></p>
+<p><img alt="image.png" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221225234348.png" />
+<img alt="image.png" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221225234410.png" /></p>
 
 
 
@@ -615,6 +688,42 @@
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 并查集" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              并查集
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../%E6%89%98%E7%A6%8F%E5%9B%9E%E5%BF%86/" class="md-footer__link md-footer__link--next" aria-label="Next: 托福回忆" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              托福回忆
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

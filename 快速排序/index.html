@@ -13,7 +13,7 @@
     
     
       
-        <title>1 - Frankgu的笔记本</title>
+        <title>快速排序 - Frankgu的笔记本</title>
       
     
     
@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1
+              快速排序
             
           </span>
         </div>
@@ -579,6 +584,56 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    主元选取
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    过程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    时间复杂度
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    优化
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    稳定性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    附录
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -591,15 +646,70 @@
                 
                   
 
-  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/1.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/快速排序.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>1</h1>
+  <h1>快速排序</h1>
 
-<p>东方红</p>
+<blockquote>
+<p>11-10智云</p>
+</blockquote>
+<h3 id="_1">主元选取</h3>
+<p>三选一算法（medium3）</p>
+<h3 id="_2">过程</h3>
+<blockquote>
+<p>分治：devide and conquer
+1. 选一个枢纽元(pivot)， 将数列划分为两部分，前面一部分的数都<pivot,后面都>pivot；
+2.  递归到两个子序列中分别进行快速排序；
+3.  不用合并，因为此时数列已经完全有序。
+贴个Python的伪代码，感觉还是py可读性好一点，后面是why的手写版。</p>
+</blockquote>
+<pre><code class="language-Python">def quick_sort(alist, first, last):
+    if first &gt;= last:
+        return
+    mid_value = alist[first] # 相当于pivot
+    low = first
+    high = last
+    while low &lt; high:
+        while low &lt; high and alist[high] &gt;= mid_value:
+            high -= 1  # 在右边比mid大，就不动
+        alist[low] = alist[high] 
+        while low &lt; high and alist[low] &lt; mid_value:
+            low += 1  # 在左边比mid小，就不动
+        alist[high] = alist[low]
+    alist[low] = mid_value
+    quick_sort(alist, first, low - 1)
+    quick_sort(alist, low + 1, last)
+</code></pre>
+<p><img alt="image.png|350" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221226114823.png" /></p>
+<h3 id="_3">时间复杂度</h3>
+<p>对于最优情况，每一次选择的分界值都是序列的中位数，此时算法时间复杂度满足的递推式为 <span class="arithmatex">\(T(n) = 2T(\dfrac{n}{2}) + \Theta(n)\)</span>，由主定理，<span class="arithmatex">\(T(n) = \Theta(n\log n)\)</span>。
+对于最坏情况，每一次选择的分界值都是序列的最值，此时算法时间复杂度满足的递推式为 <span class="arithmatex">\(T(n) = T(n - 1) + \Theta(n)\)</span>，累加可得 <span class="arithmatex">\(T(n) = \Theta(n^2)\)</span>。
+平均： <span class="arithmatex">\(O(nlogn)\)</span></p>
+<h3 id="_4">优化</h3>
+<ul>
+<li>通过 <strong>三数取中（即选取第一个、最后一个以及中间的元素中的中位数）</strong> 的方法来选择pivot。这样可以避免极端数据（如升序序列或降序序列）带来的退化；</li>
+<li>当序列较短时，使用 <strong>插入排序</strong> 的效率更高；</li>
+<li>每趟排序后，<strong>将与分界元素相等的元素聚集在分界元素周围</strong>，这样可以避免极端数据（如序列中大部分元素都相等）带来的退化。
+将递归深度限制在<span class="arithmatex">\(log2 n\)</span>,超过限制就变成堆排序，能保证不退化为<span class="arithmatex">\(O(nlogn)\)</span>，这就是内省排序Introsort，能使最坏复杂度为<span class="arithmatex">\(O(nlogn)\)</span>。</li>
+</ul>
+<h3 id="_5">稳定性</h3>
+<p>不稳定</p>
+<h3 id="_6">附录</h3>
+<p><a href="https://zh.wikibooks.org/wiki/%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/%E6%8E%92%E5%BA%8F/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F">各种语言实现快排</a>
+以及python 为什么是神……</p>
+<pre><code class="language-Python">def quick_sort(l):
+    if not l:
+        return l
+    return quick_sort(
+        [x for x in l[1:] if x &lt; l[0]]
+    ) + [l[0]] + quick_sort(
+        [x for x in l[1:] if x &gt;= l[0]]
+    )
+</code></pre>
 
 
 

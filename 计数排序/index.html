@@ -13,7 +13,7 @@
     
     
       
-        <title>1 - Frankgu的笔记本</title>
+        <title>计数排序 - Frankgu的笔记本</title>
       
     
     
@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1
+              计数排序
             
           </span>
         </div>
@@ -579,6 +584,28 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    伪代码
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    时间复杂度
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -591,15 +618,49 @@
                 
                   
 
-  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/1.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/计数排序.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>1</h1>
+  <h1>计数排序</h1>
 
-<p>东方红</p>
+<ol>
+<li>计算每个数出现了几次；</li>
+<li>求出每个数出现次数的前缀和；</li>
+<li>利用出现次数的前缀和，<u>从右至左</u>计算每个数的排名。<blockquote>
+<p>为什么用前缀和？就是为了保证算法的稳定性。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="_1">伪代码</h3>
+<div class="arithmatex">\[
+\begin{array}{ll}
+1 &amp; \textbf{Input. } \text{An array } A \text{ consisting of }n\text{ positive integers no greater than } w. \\
+2 &amp; \textbf{Output. } \text{Array }A\text{ after sorting in nondecreasing order stably.} \\
+3 &amp; \textbf{Method. }  \\
+4 &amp; \textbf{for }i\gets0\textbf{ to }w\\
+5 &amp; \qquad cnt[i]\gets0\\
+6 &amp; \textbf{for }i\gets1\textbf{ to }n\\
+7 &amp; \qquad cnt[A[i]]\gets cnt[A[i]]+1\\
+8 &amp; \textbf{for }i\gets1\textbf{ to }w\\
+9 &amp; \qquad cnt[i]\gets cnt[i]+cnt[i-1]\\
+10 &amp; \textbf{for }i\gets n\textbf{ downto }1\\
+11 &amp; \qquad B[cnt[A[i]]]\gets A[i]\\
+12 &amp; \qquad cnt[A[i]]\gets cnt[A[i]]-1\\
+13 &amp; \textbf{return } B
+\end{array}
+\]</div>
+<pre><code>int n, w, a[N], cnt[W], b[N]; 
+void counting_sort() { 
+    memset(cnt, 0, sizeof(cnt)); 
+    for (int i = 1; i &lt;= n; ++i) ++cnt[a[i]]; 
+    for (int i = 1; i &lt;= w; ++i) cnt[i] += cnt[i - 1]; 
+    for (int i = n; i &gt;= 1; --i) b[cnt[a[i]]--] = a[i]; }
+</code></pre>
+<h3 id="_2">时间复杂度</h3>
+<p>计数排序的时间复杂度为 <span class="arithmatex">\(O(n+w)\)</span>，其中 <span class="arithmatex">\(w\)</span> 代表待排序数据的值域大小。</p>
 
 
 

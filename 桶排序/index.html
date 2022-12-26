@@ -13,7 +13,7 @@
     
     
       
-        <title>1 - Frankgu的笔记本</title>
+        <title>桶排序 - Frankgu的笔记本</title>
       
     
     
@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1
+              桶排序
             
           </span>
         </div>
@@ -579,6 +584,35 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    算法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    时间复杂度
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    应用
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -591,15 +625,33 @@
                 
                   
 
-  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/1.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/桶排序.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>1</h1>
+  <h1>桶排序</h1>
 
-<p>东方红</p>
+<blockquote>
+<p>可以做到稳定非原地排序</p>
+<p>在《啊哈算法》&amp; 11-17why教的桶排序其实叫<strong>计数排序</strong></p>
+</blockquote>
+<p>桶排序可以看作是<a href="../%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/">计数排序</a>的推广；事实上，如果每个桶的大小都是 1，那么桶排序就会退化为计数排序。桶排序的可变桶大小允许它使用 O( <em>n</em> ) 内存(这里的n就是要排序数字的数量。)而不是 O( <em>M</em> ) 内存，其中_M_是不同值的数量；作为交换，它放弃计算排序的 O( <em>n</em> + <em>M</em> ) 最坏情况行为。</p>
+<h3 id="_1">算法</h3>
+<ol>
+<li>设置几个数组作为空桶。</li>
+<li>从左到右遍历待排序序列，把每个元素都放到对应的桶中。</li>
+<li>对每个不是空的桶进行排序。（由于每块元素不多，一般使用插入排序。）</li>
+<li>依次取出所有桶中的元素放回原序列。
+<img alt="image.png|325" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221221171121.png" /></li>
+</ol>
+<h3 id="_2">时间复杂度</h3>
+<p>桶排序的平均时间复杂度为 <span class="arithmatex">\(O(n + n^2/k + k)\)</span>（将值域平均分成 <span class="arithmatex">\(n\)</span> 块 + 排序 + 重新合并元素），当 <span class="arithmatex">\(k\approx n\)</span> 时为 <span class="arithmatex">\(O(n)\)</span>。（k为桶的数量）（中间的<span class="arithmatex">\(n^2/k\)</span>为: 比如用<span class="arithmatex">\(O(n^2)\)</span>的冒泡,为<span class="arithmatex">\(O((\frac{n}{k})^2*k) = O(n^2/k)\)</span>
+<strong>最坏情况：</strong>
+元素都被分到一个桶里面，那么时间复杂度将由对桶内实行的排序算法决定。比如 <span class="arithmatex">\(O(n^2)\)</span> 的插入排序，或者 <span class="arithmatex">\(O(nlogn)\)</span> 的比较排序。</p>
+<h3 id="_3">应用</h3>
+<p>适用于数据是<strong>均匀分布</strong>的情况，这样可以让分布到各个桶内的元素数量相当。而不是被集中分配到其中一个桶或几个桶。</p>
 
 
 

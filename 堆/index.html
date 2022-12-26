@@ -13,7 +13,7 @@
     
     
       
-        <title>1 - Frankgu的笔记本</title>
+        <title>堆 - Frankgu的笔记本</title>
       
     
     
@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1
+              堆
             
           </span>
         </div>
@@ -579,6 +584,82 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    二叉堆
+  </a>
+  
+    <nav class="md-nav" aria-label="二叉堆">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    插入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    删除操作
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    建堆
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    堆排序
+  </a>
+  
+    <nav class="md-nav" aria-label="堆排序">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    时间复杂度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    堆排序进阶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    多叉堆
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -591,15 +672,72 @@
                 
                   
 
-  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/1.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/堆.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>1</h1>
+  <h1>堆</h1>
 
-<p>东方红</p>
+<blockquote>
+<p>11-03 智云</p>
+</blockquote>
+<h2 id="_1">二叉堆</h2>
+<ul>
+<li>完全二叉树</li>
+<li>父节点&gt;子节点（大根堆）这样堆顶就是最大值
+根据完全二叉树的性质，第<span class="arithmatex">\(i\)</span>个节点的左孩子就是<span class="arithmatex">\(2i\)</span>，右孩子就是<span class="arithmatex">\(2i+1\)</span>。所以可以直接用一个数组来存。(<span class="arithmatex">\(a_1\)</span>就是堆顶元素，依次排下去)
+<img alt="image.png|300" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221224111032.png" /><img alt="image.png|325" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221224105626.png" /></li>
+</ul>
+<h3 id="_2">插入</h3>
+<p>插入一个新元素，先插到最后，然后再不停换（升堆）
+<strong>向上调整</strong>：如果这个结点的权值大于它父亲的权值，就交换，重复此过程直到不满足或者到根。复杂度<span class="arithmatex">\(O(logn)\)</span></p>
+<pre><code>void up(int x) {
+  while (x &gt; 1 &amp;&amp; h[x] &gt; h[x / 2]) {
+    swap(h[x], h[x / 2]);
+    x /= 2;
+  }
+}
+</code></pre>
+<p>PS: 既然我们可以用一个数组形式地去记录一个堆,那么其实每次交换可以不实际地去做三次赋值，而是用<span class="arithmatex">\(a_0\)</span>这个元素去“缓存”下你要交换的值，这样可以减少一些赋值操作，提高效率。</p>
+<h3 id="_3">删除操作</h3>
+<p>删除操作指删除堆中最大的元素，即删除根结点。但是如果直接删除，则变成了两个堆，难以处理。
+我们的做法是：把堆顶的节点与最后一个节点进行交换，然后删掉他，最后对堆顶元素<strong>向下调整</strong>，就能使调整完的东西重新满足堆的性质。</p>
+<h2 id="_4">建堆</h2>
+<blockquote>
+<p>上面讲了堆的一些基本操作，那给你一个数组，怎么建立一个堆呢?
+1. 一个一个insert是最简单的方法，但这样的复杂度是<span class="arithmatex">\(O(nlogn)\)</span>。
+下面是常用的<span class="arithmatex">\(O(n)\)</span>建堆的方法：
+从约为 <span class="arithmatex">\(n/2\)</span> 的地方开始调整（因为后面的节点都是叶子节点，无需调整），从后往前对每个节点进行向下调整，这个过程中，需要比较和交换的节点个数，跟这个节点的高度 k 成正比。
+<img alt="image.png|325" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221224111724.png" />
+所以只要求倒数第二层节点往前的高度，注意这是一个等差 * 等比的式子，计算后就是
+<span class="arithmatex">\(2^{h+1}-h-2\)</span>，代入h = log2n, 就得到复杂度是 <span class="arithmatex">\(O(n)\)</span> 。
+<a href="https://blog.csdn.net/u010711495/article/details/117386069">比较清楚的推导</a></p>
+</blockquote>
+<h2 id="_5">堆排序</h2>
+<p>先建立一个大根堆，再进行一次DELETE操作，可以得到整个堆的最大值，将剩余n-1个元素重新调整成堆后，在一次DELETE得到次大值，如此就能得到最后有序的结果。</p>
+<h3 id="_6">时间复杂度</h3>
+<p><span class="arithmatex">\(O(nlogn)\)</span> （每次DELETE都是<span class="arithmatex">\(O(logn)\)</span>）
+堆本来是非原地算法。not-in-place ，但用数组模拟堆可以做到原地。（堆是个幻觉）</p>
+<h3 id="_7">堆排序进阶</h3>
+<p>要求你输出第k大的元素？
+方案1：进行k次DELETE操作，就是要的结果。
+（这样最坏效率是<span class="arithmatex">\(O(nlogn)\)</span>）
+方案2：给你n个元素<span class="arithmatex">\(a_1,a_2,…,a_n\)</span>，先给前k个建最小堆。然后</p>
+<pre><code>for i = k+1 to n:
+    if (a[i] &gt; 堆顶元素) :
+        insert(a[i])
+</code></pre>
+<p>这样堆里的k-1个元素都比最后的堆顶大，而没进堆的都比堆顶小，这样最后的堆顶就是第 <span class="arithmatex">\(k\)</span> 大的。
+上面只是提供一种新颖的思路，但似乎没快多少，更好的算法老师说参见《算法导论》。</p>
+<blockquote>
+<p>下面是<span class="arithmatex">\(O(n)\)</span> 求第k大的思路：</p>
+</blockquote>
+<p>我们可以借助快速排序的思想解决这个问题。考虑快速排序的划分过程，在快速排序的「划分」结束后，数列 <span class="arithmatex">\(A_{p} \cdots A_{r}\)</span> 被分成了 <span class="arithmatex">\(A_{p} \cdots A_{q}\)</span> 和 <span class="arithmatex">\(A_{q+1} \cdots A_{r}\)</span>，此时可以按照左边元素的个数（<span class="arithmatex">\(q - p + 1\)</span>）和 <span class="arithmatex">\(k\)</span> 的大小关系来判断是只在左边还是只在右边递归地求解。
+可以证明，在期望意义下，程序的时间复杂度为 <span class="arithmatex">\(O(n)\)</span>。</p>
+<h3 id="_8">多叉堆</h3>
+<p>二叉堆不一定效率最高，老师提到四叉堆效率可能更高，但具体实现还是二叉堆更普遍。</p>
 
 
 

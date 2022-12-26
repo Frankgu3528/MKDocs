@@ -13,7 +13,7 @@
     
     
       
-        <title>1 - Frankgu的笔记本</title>
+        <title>希尔排序 - Frankgu的笔记本</title>
       
     
     
@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1
+              希尔排序
             
           </span>
         </div>
@@ -579,6 +584,48 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    过程
+  </a>
+  
+    <nav class="md-nav" aria-label="过程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    空间复杂度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    稳定性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    时间复杂度
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -591,15 +638,36 @@
                 
                   
 
-  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/1.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/希尔排序.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>1</h1>
+  <h1>希尔排序</h1>
 
-<p>东方红</p>
+<blockquote>
+<p>11-10智云，讲了30分钟吧 
+英文：shell-sort 插入排序的改进版</p>
+</blockquote>
+<h2 id="_1">过程</h2>
+<p>排序对不相邻的记录进行比较和移动：
+1.  将待排序序列分为若干子序列（每个子序列的元素在原始数组中间距相同）；
+2.  对这些子序列进行<strong>插入排序</strong>；
+3.  减小每个子序列中元素之间的间距gap，重复上述过程直至间距减少为 1。
+比如我按gap=5排一遍，再gap=3排一遍，再gap=1(就是普通插入排序)来一遍。
+* 奇数序列表现的更棒，而偶数序列可能比插入排序更慢。</p>
+<h3 id="_2">空间复杂度</h3>
+<p><span class="arithmatex">\(O(1)\)</span>的原地算法，很棒。</p>
+<h3 id="_3">稳定性</h3>
+<p>不稳定</p>
+<h3 id="_4">时间复杂度</h3>
+<p>最优时间复杂度： <span class="arithmatex">\(O(n)\)</span> (一个有序的序列)
+希尔排序的平均时间复杂度和最坏时间复杂度与间距序列的选取（就是间距如何减小到 1）有关，
+比如「间距每次除以 3」的希尔排序的时间复杂度是<span class="arithmatex">\(O(n^{\frac{3}{2}})\)</span>。
+<img alt="image.png" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221225234827.png" /></p>
+<p>下面是why说的一个（已知）最好的序列选取，当拓展视野吧。
+<img alt="image.png|450" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221225232549.png" /></p>
 
 
 

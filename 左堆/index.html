@@ -13,7 +13,7 @@
     
     
       
-        <title>1 - Frankgu的笔记本</title>
+        <title>左堆 - Frankgu的笔记本</title>
       
     
     
@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1
+              左堆
             
           </span>
         </div>
@@ -579,6 +584,34 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    左堆定义
+  </a>
+  
+    <nav class="md-nav" aria-label="左堆定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#merge" class="md-nav__link">
+    合并 merge
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -591,15 +624,43 @@
                 
                   
 
-  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/1.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/左堆.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>1</h1>
+  <h1>左堆</h1>
 
-<p>东方红</p>
+<p>11-03智云</p>
+<blockquote>
+<p>为什么要提出左堆这么一个概念呢？有了二插堆还不够么。这是因为前面提到的数据结构在支持合并（merge）操作的时候是比较差的。左堆就是这样造出来的。</p>
+</blockquote>
+<p><strong>Npl(X)</strong> 零路径长（null path length）：结点X到一个没有两个儿子的结点的最短路径的长度。这里我们定义没有两个儿子的结点的Npl(x) =0；
+<img alt="image.png|450" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221224185133.png" /></p>
+<h2 id="_1">左堆定义</h2>
+<ul>
+<li>保留堆的二叉树属性和最小堆属性</li>
+<li><strong>任意结点的左孩子的Npl大于等于右孩子的Npl。</strong>
+所以左堆不是完全二叉树，并不能存在数组里。</li>
+</ul>
+<h3 id="merge">合并 merge</h3>
+<p>合并两个堆时，由于要满足堆性质，先取值较小（为了方便，本文讨论小根堆）的那个根作为合并后堆的根节点，然后将这个根的左儿子作为合并后堆的左儿子，递归地合并其右儿子与另一个堆，作为合并后的堆的右儿子。为了满足左偏性质，合并后若左儿子的 npl 小于右儿子的 ，就交换两个儿子。
+合并两个大小分别为 <span class="arithmatex">\(n\)</span> 和 <span class="arithmatex">\(m\)</span> 的堆复杂度是 <span class="arithmatex">\(O(\log n+\log m)\)</span></p>
+<pre><code>int merge(int x, int y) {
+  if (!x || !y) return x | y;  // 若一个堆为空则返回另一个堆
+  if (t[x].val &gt; t[y].val) swap(x, y);  // 取值较小的作为根
+  t[x].rs = merge(t[x].rs, y);          // 递归合并右儿子与另一个堆
+  if (t[t[x].rs].d &gt; t[t[x].ls].d)
+    swap(t[x].ls, t[x].rs);   // 若不满足左偏性质则交换左右儿子
+  t[x].npl = t[t[x].rs].npl + 1;  // 更新npl
+  return x;
+}
+</code></pre>
+<p><img alt="image.png|575" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221224223254.png" />
+可以过一遍上面的例子，就差不多会这个操作了。
+<img alt="image.png" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221225202839.png" />
+左堆相当于AVLtree，维护了扩展属性npl；相应于splaytree，斜堆就是类似伸展树的结构。</p>
 
 
 
