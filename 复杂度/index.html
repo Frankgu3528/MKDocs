@@ -793,14 +793,9 @@
 - <span class="arithmatex">\(f_1(n) + f_2(n) = O(\max(f_1(n), f_2(n)))\)</span>
 - <span class="arithmatex">\(f_1(n) \times f_2(n) = O(f_1(n) \times f_2(n))\)</span></p>
 <h2 id="_4">主定理</h2>
-<p>将规模为 <span class="arithmatex">\(n\)</span> 的问题，分解为 <span class="arithmatex">\(a\)</span> 个规模为 <span class="arithmatex">\((\frac{n}{b})\)</span> 的问题，然后依次合并。每一次合并子问题，都需要花费 <span class="arithmatex">\(f(n)\)</span> 的时间。
-$$
-T(n) = a T\left(\frac{n}{b}\right)+f(n)\qquad \forall n &gt; b
-$$
-$$
-那么T(n) = \begin{cases}\Theta(n^{\log_b a}) &amp; f(n) = O(n^{\log_b a-\epsilon}) \ \Theta(f(n)) &amp; f(n) = \Omega(n^{\log_b a+\epsilon})\ \Theta(n^{\log_b a}\log^{k+1} n) &amp; f(n)=\Theta(n^{\log_b a}\log^k n),k\ge 0 \end{cases}
-$$
-需要注意的是，这里的第二种情况还需要满足 regularity condition, 即 <span class="arithmatex">\(a f(n/b) \leq c f(n)\)</span>，任意 <span class="arithmatex">\(c &lt; 1\)</span> 所有足够大的 <span class="arithmatex">\(n\)</span>。
+<p>将规模为 <span class="arithmatex">\(n\)</span> 的问题，分解为 <span class="arithmatex">\(a\)</span> 个规模为 <span class="arithmatex">\((\frac{n}{b})\)</span> 的问题，然后依次合并。每一次合并子问题，都需要花费 <span class="arithmatex">\(f(n)\)</span> 的时间。</p>
+<p><img alt="image-20221229160145116" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/image-20221229160145116.png" /></p>
+<p>需要注意的是，这里的第二种情况还需要满足 regularity condition, 即 <span class="arithmatex">\(a f(n/b) \leq c f(n)\)</span>，任意 <span class="arithmatex">\(c &lt; 1\)</span> 所有足够大的 <span class="arithmatex">\(n\)</span>。
 例如 <span class="arithmatex">\(T(n) = T\left(\frac{n}{2}\right) + n\)</span>，那么 <span class="arithmatex">\(a=1, b=2, {\log_2 1} = 0\)</span>，那么 <span class="arithmatex">\(\epsilon\)</span> 可以取值为 <span class="arithmatex">\(0.5\)</span>，从而满足第二种情况，所以 <span class="arithmatex">\(T(n) = \Theta(n)\)</span>。</p>
 <p>再例如 <span class="arithmatex">\(T(n) = T\left(\frac{n}{2}\right) + {\log n}\)</span>，那么 <span class="arithmatex">\(a=1, b=2, {\log_2 1}=0\)</span>，那么 <span class="arithmatex">\(k\)</span> 可以取值为 <span class="arithmatex">\(1\)</span>，从而满足第三种情况，所以 <span class="arithmatex">\(T(n) = \Theta(\log^2 n)\)</span>。</p>
 
