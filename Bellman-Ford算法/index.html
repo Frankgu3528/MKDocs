@@ -13,7 +13,7 @@
     
     
       
-        <title>排序的稳定性 - Frankgu的笔记本</title>
+        <title>Bellman Ford算法 - Frankgu的笔记本</title>
       
     
     
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              排序的稳定性
+              Bellman Ford算法
             
           </span>
         </div>
@@ -638,16 +638,38 @@
                 
                   
 
-  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/排序的稳定性.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/Bellman-Ford算法.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>排序的稳定性</h1>
+  <h1>Bellman Ford算法</h1>
 
-<p><strong>稳定性</strong>是指相等的元素经过排序之后相对顺序是否发生了改变。
-拥有稳定性这一特性的算法会让原本有相等键值的纪录维持相对次序，即如果一个排序算法是稳定的，当有两个相等键值的纪录R和S ，且在原本的列表中R出现在S之前，在排序过的列表中R也将会是在S之前。</p>
+<blockquote>
+<p>解决了Dijkstra不能解决负边的问题，代价是更高的时间复杂度。</p>
+</blockquote>
+<p><a href="https://www.bilibili.com/video/BV1gb41137u4/?spm_id_from=333.337.search-card.all.click&amp;vd_source=7dcda248e16142ad5a30747514b5afce">一个很好的视频</a></p>
+<pre><code>初始化：  // 跟Dijkstra一样
+    for each vertex v:
+        v.dis = Inf;
+        v.known = false;
+    for i = 1 to |V|-1: // 注意循环V-1次
+        for each (u,v) in E:
+            if v.dis &gt; u.dis+w(u,v): 
+                v.dis = u.dis+w(u,v)
+    for each (u,v) in E:
+        if v.dis &gt; u.dis+w(u,v): 
+            输出：出现负变换！
+</code></pre>
+<p>简单记就是迭代V-1次，每次迭代都是一条边一条边去更新。</p>
+<blockquote>
+<p>Q: 想问一下为什么要做v-1次relax操作？
+A: 因为每次最外层循环都会确定一个顶点到起点的最短路，而总共需要求v-1个顶点（除了起点）到起点的最短路。或者说：所有的最短路径的最长边数是顶点数-1，也就是v-1。</p>
+</blockquote>
+<ul>
+<li>时间复杂度显然是<span class="arithmatex">\(O(EV)\)</span>。</li>
+</ul>
 
 
 

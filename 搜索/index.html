@@ -13,7 +13,7 @@
     
     
       
-        <title>排序的稳定性 - Frankgu的笔记本</title>
+        <title>搜索 - Frankgu的笔记本</title>
       
     
     
@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#bfs" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              排序的稳定性
+              搜索
             
           </span>
         </div>
@@ -626,6 +631,34 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bfs" class="md-nav__link">
+    BFS
+  </a>
+  
+    <nav class="md-nav" aria-label="BFS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dfs" class="md-nav__link">
+    DFS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -638,16 +671,40 @@
                 
                   
 
-  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/排序的稳定性.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/搜索.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>排序的稳定性</h1>
+  <h1>搜索</h1>
 
-<p><strong>稳定性</strong>是指相等的元素经过排序之后相对顺序是否发生了改变。
-拥有稳定性这一特性的算法会让原本有相等键值的纪录维持相对次序，即如果一个排序算法是稳定的，当有两个相等键值的纪录R和S ，且在原本的列表中R出现在S之前，在排序过的列表中R也将会是在S之前。</p>
+<blockquote>
+<p>11-17, 这么重要的东西就提了10分钟？</p>
+</blockquote>
+<h2 id="bfs">BFS</h2>
+<blockquote>
+<p>每次都尝试访问<strong>同一层</strong>的节点。 如果同一层都访问完了，再访问下一层。</p>
+</blockquote>
+<pre><code>def bfs(s):
+  q = new queue()
+  q.push(s), visited[s] = true
+  while (!q.empty()) 
+    u = q.pop()
+    for each edge(u, v) 
+        if (!visited[v]) 
+            q.push(v)
+            visited[v] = true
+</code></pre>
+<h3 id="dfs">DFS</h3>
+<pre><code>DFS(v) // v 可以是图中的一个顶点
+    在 v 上打访问标记
+    for u in v 的相邻节点
+        if u 没有打过访问标记 then
+            DFS(u)
+</code></pre>
+<p>如果bfs是“一层一层”，那么dfs就是一根一根，先ABE，在ACFHGD，发现搜索好了结束。
+<img alt="image.png|375" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221228103653.png" /></p>
 
 
 

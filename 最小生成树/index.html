@@ -13,7 +13,7 @@
     
     
       
-        <title>排序的稳定性 - Frankgu的笔记本</title>
+        <title>最小生成树 - Frankgu的笔记本</title>
       
     
     
@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#prim" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              排序的稳定性
+              最小生成树
             
           </span>
         </div>
@@ -626,6 +631,28 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prim" class="md-nav__link">
+    Prim算法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kruskal" class="md-nav__link">
+    Kruskal算法
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -638,16 +665,50 @@
                 
                   
 
-  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/排序的稳定性.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/最小生成树.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>排序的稳定性</h1>
+  <h1>最小生成树</h1>
 
-<p><strong>稳定性</strong>是指相等的元素经过排序之后相对顺序是否发生了改变。
-拥有稳定性这一特性的算法会让原本有相等键值的纪录维持相对次序，即如果一个排序算法是稳定的，当有两个相等键值的纪录R和S ，且在原本的列表中R出现在S之前，在排序过的列表中R也将会是在S之前。</p>
+<blockquote>
+<p>12-01智云
+感觉这部分不像是重点？只讲了Prim没讲Kruskal,另外why带我们参观了办公室~</p>
+</blockquote>
+<p><strong>生成树:</strong> 对连通图进行遍历，过程中所经过的边和顶点的组合可看做是一棵树.&gt;
+1.  包含连通图中所有的顶点；
+2.  任意两顶点之间有且仅有一条通路；</p>
+<p><strong>最小生成树：</strong> <span class="arithmatex">\(\sum w(u,v)\)</span> 最小的生成树T</p>
+<blockquote>
+<p>如果T是图G(V,E)的最小生成树，那么在T上砍一刀，分成 <span class="arithmatex">\(T_1,T_2\)</span>，则他们分别是子图 <span class="arithmatex">\(G_1,G_2\)</span> 的最小生成树。</p>
+</blockquote>
+<h3 id="prim">Prim算法</h3>
+<blockquote>
+<p>Prim是每次选择距离<strong>最近</strong>的点，然后加进来；</p>
+</blockquote>
+<p>伪代码：</p>
+<pre><code>初始化：
+    任选一个顶点s作为root dis(root) = 0;
+    对剩余顶点： dis[v] = inf;
+    result = 0; // 存放最小生成树的长度
+Prim():
+    rest = V;
+    while (!rest.empty()):
+        找出dis最小的节点cur；
+        result = result + dis[cur];
+        rest = rest - {cur} // 把cur从剩余节点移除（可以建个标记数组什么的）
+        for each node v adjacent to cur： 
+            dis[v] = min(dis[v],w[cur,v])
+</code></pre>
+<h3 id="kruskal">Kruskal算法</h3>
+<blockquote>
+<p>老师上课没提应该不会考</p>
+</blockquote>
+<p>先把所有边拿出来排个序，然后按权值一条一条连会去（贪心），如果构成了环，就把连的那根跳过，用下一根连回去.
+<a href="https://www.bilibili.com/video/BV1Eb41177d1/?spm_id_from=333.337.search-card.all.click&amp;vd_source=7dcda248e16142ad5a30747514b5afce">一个很好的视频</a>
+上面这个判断过程一般用<a href="../%E5%B9%B6%E6%9F%A5%E9%9B%86/">并查集</a>来维护，最后可以得到<span class="arithmatex">\(O(mlogm)\)</span>的Kruskal算法。</p>
 
 
 

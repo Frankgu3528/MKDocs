@@ -13,7 +13,7 @@
     
     
       
-        <title>排序的稳定性 - Frankgu的笔记本</title>
+        <title>Johnson算法 - Frankgu的笔记本</title>
       
     
     
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              排序的稳定性
+              Johnson算法
             
           </span>
         </div>
@@ -638,16 +638,26 @@
                 
                   
 
-  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/排序的稳定性.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/Johnson算法.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>排序的稳定性</h1>
+  <h1>Johnson算法</h1>
 
-<p><strong>稳定性</strong>是指相等的元素经过排序之后相对顺序是否发生了改变。
-拥有稳定性这一特性的算法会让原本有相等键值的纪录维持相对次序，即如果一个排序算法是稳定的，当有两个相等键值的纪录R和S ，且在原本的列表中R出现在S之前，在排序过的列表中R也将会是在S之前。</p>
+<p>首先Dijkstra算法能做到<span class="arithmatex">\(O(mlogm)\)</span>的（取决于它的不同优化方式）
+那么如果跑n次Dijkstra，能做到<span class="arithmatex">\(O(nmlogm)\)</span>, 可以在<span class="arithmatex">\(m=\Theta(n)\)</span>（稀疏图）的时候比<a href="../Floyd%E7%AE%97%E6%B3%95/">Floyd算法</a>更加优秀，唯一的顾虑就是要解决Dijkstra不能处理负边的问题。</p>
+<blockquote>
+<p>尝试1：给每个边权都加上一个相等的数c，使图里没有负边，再跑Dijkstra，遗憾的是这样是错误的。</p>
+</blockquote>
+<p>Johnson算法就是解决这个问题的。
+1. 新建一个超级源点 <span class="arithmatex">\(V_0\)</span> ，将它和每一个顶点连一条权重为0的边。
+2. 以超级源点为起点，运行 Bellman-Ford 算法，求出到每个节点的最短路，记为 <span class="arithmatex">\(h_i\)</span> 。
+3. 用 <span class="arithmatex">\(w(u,v)+h_u-h_v\)</span> 来更新w(u,v)，再跑n次Dijkstra即可。</p>
+<p>这样的话，可以优化到 <span class="arithmatex">\(O(nmlogm)\)</span> （用优先队列处理Dijkstra)</p>
+<p>PS：why写的这个复杂度应该是用斐波那契堆把Dijkstra做到<span class="arithmatex">\(O(m+nlogn)\)</span>的。
+<img alt="image.png|450" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221228204707.png" /></p>
 
 
 

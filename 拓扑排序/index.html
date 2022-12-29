@@ -13,7 +13,7 @@
     
     
       
-        <title>排序的稳定性 - Frankgu的笔记本</title>
+        <title>拓扑排序 - Frankgu的笔记本</title>
       
     
     
@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#kahn" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              排序的稳定性
+              拓扑排序
             
           </span>
         </div>
@@ -626,6 +631,28 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kahn" class="md-nav__link">
+    Kahn 算法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    时间复杂度
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -638,16 +665,39 @@
                 
                   
 
-  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/排序的稳定性.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/拓扑排序.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>排序的稳定性</h1>
+  <h1>拓扑排序</h1>
 
-<p><strong>稳定性</strong>是指相等的元素经过排序之后相对顺序是否发生了改变。
-拥有稳定性这一特性的算法会让原本有相等键值的纪录维持相对次序，即如果一个排序算法是稳定的，当有两个相等键值的纪录R和S ，且在原本的列表中R出现在S之前，在排序过的列表中R也将会是在S之前。</p>
+<blockquote>
+<p>11-24</p>
+</blockquote>
+<p>拓扑排序是一个很现实的问题，比如下面这样一幅图代表了课程修读的先后关系。
+如果存在一个i到j的路径，我们就认为i依赖于j，在最后的排序中把i放到j的前面。
+拓扑排序就是给这个图的所有节点排序的算法。
+<img alt="image.png|375" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221227225443.png" />
+注意到，这样的图只能是<strong>有向无环图</strong>（DAG），如果高代的先修课是数分，而数分的先修课又是高代，那么就不知道该怎么修读了。（出校要蓝马，蓝马得做核酸，做核酸的地方在校外……）
+PS：所以拓扑排序也可以判断一张（有向）图有没有环。</p>
+<h3 id="kahn">Kahn 算法</h3>
+<blockquote>
+<p>定义<strong>入度</strong>(indegree)：指向一个点的边的条数。
+   顶点 v 的入度 = 边（u，v）的条数。</p>
+</blockquote>
+<p>伪代码：
+<img alt="image.png" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221227230848.png" /></p>
+<p><img alt="image.png" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221227231242.png" /></p>
+<p>首先一个DAG一定有入度为0的点，不然就是有环的。所以找不到indegree=0的点，就抛出错误。</p>
+<blockquote>
+<p>可以证明，如果原图可以拓扑排序，那么删掉某个入度为0的节点后，新的图一定可以拓扑排序，即会有新的入度为0的点。</p>
+</blockquote>
+<p>如果找到一个入度为0的点，把它编上号（也可以扔到一个队列里），然后把它的所有出边都砍掉，
+再去找下一个入度为0的点，不断循环即可。</p>
+<h3 id="_1">时间复杂度</h3>
+<p><span class="arithmatex">\(O(E+V)\)</span></p>
 
 
 

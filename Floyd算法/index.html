@@ -13,7 +13,7 @@
     
     
       
-        <title>排序的稳定性 - Frankgu的笔记本</title>
+        <title>Floyd算法 - Frankgu的笔记本</title>
       
     
     
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              排序的稳定性
+              Floyd算法
             
           </span>
         </div>
@@ -638,16 +638,31 @@
                 
                   
 
-  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/排序的稳定性.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/Floyd算法.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>排序的稳定性</h1>
+  <h1>Floyd算法</h1>
 
-<p><strong>稳定性</strong>是指相等的元素经过排序之后相对顺序是否发生了改变。
-拥有稳定性这一特性的算法会让原本有相等键值的纪录维持相对次序，即如果一个排序算法是稳定的，当有两个相等键值的纪录R和S ，且在原本的列表中R出现在S之前，在排序过的列表中R也将会是在S之前。</p>
+<blockquote>
+<p>Floyd是求任意两点的最短路问题（多源）</p>
+</blockquote>
+<p>我们定义一个数组 <code>f[k][x][y]</code>，表示只允许经过结点 <span class="arithmatex">\(1\)</span> 到 <span class="arithmatex">\(k\)</span>（也就是说，在子图 <span class="arithmatex">\(V'={1, 2, \ldots, k}\)</span> 中的路径，注意，<span class="arithmatex">\(x\)</span> 与 <span class="arithmatex">\(y\)</span> 不一定在这个子图中），结点 <span class="arithmatex">\(x\)</span> 到结点 <span class="arithmatex">\(y\)</span> 的最短路长度。
+那么<code>f[n][x][y]</code>就是节点x到y的最短路</p>
+<pre><code>for (k = 1; k &lt;= n; k++):
+  for (x = 1; x &lt;= n; x++):
+    for (y = 1; y &lt;= n; y++): 
+      f[k][x][y] = min(f[k - 1][x][y], f[k - 1][x][k] + f[k - 1][k][y]);
+</code></pre>
+<p>可以证明，其实数组的第一维是不影响结果的（事实上，这个算法应该是由动态规划推出来的，不过why讲的时候没怎么听）</p>
+<pre><code>for (k = 1; k &lt;= n; k++):
+    for (x = 1; x &lt;= n; x++):
+        for (y = 1; y &lt;= n; y++):
+            f[x][y] = min(f[x][y], f[x][k] + f[k][y]);
+</code></pre>
+<p>经过上面的优化后，时间复杂度是<span class="arithmatex">\(O(n^3)\)</span>，空间复杂度是<span class="arithmatex">\(O(n^2)\)</span>。</p>
 
 
 
