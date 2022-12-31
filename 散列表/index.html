@@ -403,29 +403,104 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    冲突
+    装填因子
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    拉链法
+    冲突
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    更好的哈希函数
+    选取好的哈希函数
   </a>
   
-    <nav class="md-nav" aria-label="更好的哈希函数">
+    <nav class="md-nav" aria-label="选取好的哈希函数">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     除同余：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    乘同余
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    冲突处理办法
+  </a>
+  
+    <nav class="md-nav" aria-label="冲突处理办法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    拉链法（分离链接法）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    开放寻址法
+  </a>
+  
+    <nav class="md-nav" aria-label="开放寻址法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    线性探测法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    平方探测法：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    双散列法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    随机增量法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asl" class="md-nav__link">
+    ASL
   </a>
   
 </li>
@@ -898,29 +973,104 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    冲突
+    装填因子
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    拉链法
+    冲突
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    更好的哈希函数
+    选取好的哈希函数
   </a>
   
-    <nav class="md-nav" aria-label="更好的哈希函数">
+    <nav class="md-nav" aria-label="选取好的哈希函数">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     除同余：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    乘同余
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    冲突处理办法
+  </a>
+  
+    <nav class="md-nav" aria-label="冲突处理办法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    拉链法（分离链接法）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    开放寻址法
+  </a>
+  
+    <nav class="md-nav" aria-label="开放寻址法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    线性探测法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    平方探测法：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    双散列法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    随机增量法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asl" class="md-nav__link">
+    ASL
   </a>
   
 </li>
@@ -953,37 +1103,60 @@
   <h1>散列表</h1>
 
 <blockquote>
-<p>10/27 智云</p>
+<p>10/27 智云+王道</p>
 </blockquote>
-<h3 id="_1">冲突</h3>
+<h3 id="_1">装填因子</h3>
+<p>a = 表中记录数/散列表长度
+即关键字key的个数/槽位的个数</p>
+<h2 id="_2">冲突</h2>
 <p>如果对于任意的键值，哈希函数计算出来的索引都不相同，那只用根据索引把 (key, value) 放到对应的位置就行了。但实际上，常常会出现两个不同的键值，他们用哈希函数计算出来的索引是相同的。这时候就需要一些方法来处理冲突。</p>
-<h3 id="_2">拉链法</h3>
-<p>OI中最常用的是拉链法。拉链法是在每个存放数据的地方开一个链表，如果有多个键值索引到同一个地方，只用把他们都放到那个位置的链表里就行了。（通俗：坐别人腿上）
-<img alt="image.png|475" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221222204501.png" /></p>
 <p>无限的key集S---&gt; 内存插槽（有限）
 无限映射到有限，势必Collision。
-search(k):
-<div class="highlight"><pre><span></span><code>if (h(k)-&gt;key != -1): // 约定没数据就设为-1
-    return h(k)-&gt; data;
-else 
-    return NULL； // 没找到
-else
-</code></pre></div></p>
-<p>insert(k1,d1)：
-<div class="highlight"><pre><span></span><code>if (h(k1)-&gt;key==-1)
-    h(k1)-&gt;key = d1;
-else:
-</code></pre></div></p>
-<p>delete(k1):
-<div class="highlight"><pre><span></span><code>if (h(k1)-&gt;key==k1)
-    h(k1)-&gt;key = -1;
-else if(h(k1)-&gt;key = -1):
-    do nothing
-else
-</code></pre></div></p>
+有<strong>两种思路</strong>（开源节流）：
+* 选取好的哈希函数（尽量简单均匀hash）
+* 如果冲突了怎么补救</p>
+<h2 id="_3">选取好的哈希函数</h2>
+<blockquote>
+<p>更好的hash函数帮助分布更加简单均匀，来极可能减少冲突。</p>
+</blockquote>
+<h3 id="_4">除同余：</h3>
+<p>$$
+ h(k) = k ~mod ~p
+$$
+p一般取不大于表长（内存插槽的个数）的最大素数</p>
+<h3 id="_5">乘同余</h3>
+<p>$$
+h(k) = (A*k~mod~2^w) &gt;&gt; (w-r)
+$$
+位运算很快。</p>
 <hr />
-<h3 id="_3">更好的哈希函数</h3>
-<h4 id="_4">除同余：</h4>
+<h2 id="_6">冲突处理办法</h2>
+<h3 id="_7">拉链法（分离链接法）</h3>
+<p>OI中最常用的是拉链法。拉链法是在每个存放数据的地方开一个链表，如果有多个键值索引到同一个地方，只用把他们都放到那个位置的链表里就行了。（通俗：<strong>坐别人腿上</strong>）
+<img alt="image.png|475" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221222204501.png" /></p>
+<h3 id="_8">开放寻址法</h3>
+<h4 id="_9">线性探测法</h4>
+<p>如果在 <code>d</code> 处发生冲突，就依次把东西放到 <code>d + 1</code>，<code>d + 2</code>……
+这样容易造成在一个地方堆积了大量元素，大大降低了查找效率，于是就有了平方探测法：</p>
+<h4 id="_10">平方探测法：</h4>
+<p>如果在 <code>d</code> 处发生冲突，就依次把东西放到<span class="arithmatex">\(d\pm1^2,d\pm2^2,d\pm3^2\)</span>……
+缺点：不能探测到散列表上的所有单元，只能探测到一半单元</p>
+<h4 id="_11">双散列法</h4>
+<p>用另一个hash函数计算增量</p>
+<h4 id="_12">随机增量法</h4>
+<p>用伪随机序列来当增量</p>
+<hr />
+<h3 id="asl">ASL</h3>
+<blockquote>
+<p>这东西似乎书上没有，考研题里看到的。</p>
+</blockquote>
+<p>分为成功ASL和失败ASL，看下面的例题：</p>
+<p><img alt="image.png" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221231234130.png" /></p>
+<p>散列表大小为10，依次代入数据，建好散列表为：
+<img alt="image.png" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221231234225.png" />
+<img alt="image.png" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221231234237.png" />
+失败ASL是：
+<img alt="image.png" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221231234418.png" /></p>
 
 
 
