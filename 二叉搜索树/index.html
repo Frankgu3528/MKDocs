@@ -13,7 +13,7 @@
     
     
       
-        <title>拓扑排序 - Frankgu的笔记本</title>
+        <title>二叉搜索树 - Frankgu的笔记本</title>
       
     
     
@@ -107,7 +107,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kahn" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -140,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              拓扑排序
+              二叉搜索树
             
           </span>
         </div>
@@ -300,12 +300,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -326,12 +328,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
       
       
       
@@ -366,12 +370,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_2" type="checkbox" id="__nav_3_1_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_2" type="checkbox" id="__nav_3_1_2" checked>
       
       
       
@@ -392,11 +398,76 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          二叉搜索树
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         二叉搜索树
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    定义：
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    查找：
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#findminfindmax" class="md-nav__link">
+    findmin&amp;findmax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insert" class="md-nav__link">
+    insert
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    Delete
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -918,15 +989,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#kahn" class="md-nav__link">
-    Kahn 算法
+  <a href="#_1" class="md-nav__link">
+    定义：
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    时间复杂度
+  <a href="#_2" class="md-nav__link">
+    查找：
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#findminfindmax" class="md-nav__link">
+    findmin&amp;findmax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insert" class="md-nav__link">
+    insert
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    Delete
   </a>
   
 </li>
@@ -945,39 +1037,74 @@
                 
                   
 
-  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/拓扑排序.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/二叉搜索树.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>拓扑排序</h1>
+  <h1>二叉搜索树</h1>
 
-<blockquote>
-<p>11-24</p>
+<h3 id="_1">定义：</h3>
+<ul>
+<li>左&lt;父&lt;右</li>
+<li>左右子树也都是BST<blockquote>
+<p>判断：中序遍历是不是递增的。
+<div class="highlight"><pre><span></span><code>void print(int o) {
+  // 遍历以 o 为根节点的二叉搜索树
+  if (!o) return;  // 遇到空树，返回
+  print(lc[o]);    // 递归遍历左子树
+  for (int i = 1; i &lt;= cnt[o]; i++) printf(&quot;%d\n&quot;, val[o]);  // 输出根节点信息
+  print(rc[o]);  // 递归遍历右子树
+}
+</code></pre></div></p>
 </blockquote>
-<p>拓扑排序是一个很现实的问题，比如下面这样一幅图代表了课程修读的先后关系。
-如果存在一个i到j的路径，我们就认为i依赖于j，在最后的排序中把i放到j的前面。
-拓扑排序就是给这个图的所有节点排序的算法。
-<img alt="image.png|375" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221227225443.png" />
-注意到，这样的图只能是<strong>有向无环图</strong>（DAG），如果高代的先修课是数分，而数分的先修课又是高代，那么就不知道该怎么修读了。（出校要蓝马，蓝马得做核酸，做核酸的地方在校外……）
-PS：所以拓扑排序也可以判断一张（有向）图有没有环。</p>
-<h3 id="kahn">Kahn 算法</h3>
+</li>
+</ul>
+<h3 id="_2">查找：</h3>
+<div class="highlight"><pre><span></span><code>node* search(node* root,int k):
+    if (root-&gt;key == k):
+        return root;
+    if (root-&gt;key&lt;k):
+        return search(root-&gt;left,k);
+    if (root-&gt;key&gt;k):
+        return search(root-&gt;right,k);
+</code></pre></div>
+<h3 id="findminfindmax">findmin&amp;findmax</h3>
+<p>一层一层跳，O(h)的复杂度。
+<div class="highlight"><pre><span></span><code>int findmin(int o) {
+  if (!lc[o]) return o;
+  return findmin(lc[o]);  // 一直向左儿子跳
+}
+
+int findmax(int o) {
+  if (!rc[o]) return o;
+  return findmax(rc[o]);  // 一直向右儿子跳
+}
+</code></pre></div></p>
+<h3 id="insert">insert</h3>
+<p><code>insert(o,v)</code>为以o为根节点的二叉搜索树中插入一个值为v的节点。也是O(h)复杂度。
+* 若o为空，直接创造返回一个v的新节点。
+* 若o的值&gt;v,则在o左子树中插入权值为v 的节点。
+* 若o的值&lt;v,则在o右子树中插入权值为v 的节点。
+<div class="highlight"><pre><span></span><code>node* insert(node* o,int v):
+    if (!o): return newNode(v);
+    if (val[o] &gt; v) insert(lc[o], v); 
+    if (val[o] &lt; v) insert(rc[o], v);
+</code></pre></div></p>
+<h3 id="delete">Delete</h3>
+<p>分三种情况:
+1. 要删除的点是叶子节点
+2. 要删除的节点只有一个孩子
+3. 要删除的节点有两个孩子
+对于情况1，直接删除即可；对情况2，删掉它，并用它的孩子来替换它即可；下面主要讨论情况3：
+1. 找到整棵树中比要删除节点A大一位的节点B
+2. 将B的值复制给节点A
+3. 再去删掉节点B</p>
 <blockquote>
-<p>定义<strong>入度</strong>(indegree)：指向一个点的边的条数。
-   顶点 v 的入度 = 边（u，v）的条数。</p>
+<p>这样每次一个替换都往下走，所以这个递归肯定是有穷的；另外找A的小一位的节点也行。复杂的O(h)。
+<img alt="image.png" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221231145610.png" /></p>
 </blockquote>
-<p>伪代码：
-<img alt="image.png" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221227230848.png" /></p>
-<p><img alt="image.png" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221227231242.png" /></p>
-<p>首先一个DAG一定有入度为0的点，不然就是有环的。所以找不到indegree=0的点，就抛出错误。</p>
-<blockquote>
-<p>可以证明，如果原图可以拓扑排序，那么删掉某个入度为0的节点后，新的图一定可以拓扑排序，即会有新的入度为0的点。</p>
-</blockquote>
-<p>如果找到一个入度为0的点，把它编上号（也可以扔到一个队列里），然后把它的所有出边都砍掉，
-再去找下一个入度为0的点，不断循环即可。</p>
-<h3 id="_1">时间复杂度</h3>
-<p><span class="arithmatex">\(O(E+V)\)</span></p>
 
 
 
@@ -993,6 +1120,42 @@ PS：所以拓扑排序也可以判断一张（有向）图有没有环。</p>
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../%E5%A4%8D%E6%9D%82%E5%BA%A6/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 复杂度" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              复杂度
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../AVL%20%E6%A0%91/" class="md-footer__link md-footer__link--next" aria-label="Next: AVL 树" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              AVL 树
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
