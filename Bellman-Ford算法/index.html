@@ -920,7 +920,7 @@
         v.dis = Inf;
         v.known = false;
     for i = 1 to |V|-1: // 注意循环V-1次
-        for each (u,v) in E:
+        for each (u,v) in E:  // 并不需要以特定的顺序去进行这一步
             if v.dis &gt; u.dis+w(u,v): 
                 v.dis = u.dis+w(u,v)
     for each (u,v) in E:

@@ -945,7 +945,7 @@
   <h1>Dijkstra 算法</h1>
 
 <p>不能出现：
-1. 非强连通
+1. 非强连通（这样从源点开始可能有些点走不到）
 2. 负环
 定理：假设P（u，v)是u，v之间的最短路径，x，y是这条路径中的两个点，那么P（x，y）是x，y之间的最短路径。
 （反证即可）</p>
@@ -960,9 +960,9 @@
         v.dis = Inf;
         v.known = false;
 dijkstra (vertex s) : // s 是源点
-    s.dis = 0; s.known = true;
+    s.dis = 0; s.known = true; // 初始化源点
     while(!Q.empty()):  // 这里按照why用最小堆
-        v = Q.pop(); v.known = true;
+        v = Q.pop(); v.known = true; // 找到未标记节点中路径最短的
         for (each vertex w adjacent to v):
             if (v.dis+w(u,v)&lt;w.dis):
                 w.dis = v.dis+w(u,v)

@@ -1087,8 +1087,11 @@ int findmax(int o) {
 2. 将B的值复制给节点A
 3. 再去删掉节点B</p>
 <blockquote>
-<p>这样每次一个替换都往下走，所以这个递归肯定是有穷的；另外找A的小一位的节点也行。复杂的O(h)。
-<img alt="image.png" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221231145610.png" /></p>
+<p>这样每次一个替换都往下走，所以这个递归肯定是有穷的；另外找A的小一位的节点也行。复杂的O(h)。</p>
+</blockquote>
+<p><img alt="image.png" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20230101164701.png" /></p>
+<blockquote>
+<p>其实二叉搜索树也能看做一个排序，用n次插入的方法用O(nlogn)建立二叉搜索树，然后再用O(n)的中序遍历。可以和堆排序对照着看：堆排序在建堆上只需要O(n)，但n次DELETE却要O(nlogn)，最后两个排序算是扯平了。</p>
 </blockquote>
 
 

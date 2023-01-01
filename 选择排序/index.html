@@ -13,7 +13,7 @@
     
     
       
-        <title>最小生成树 - Frankgu的笔记本</title>
+        <title>选择排序 - Frankgu的笔记本</title>
       
     
     
@@ -107,7 +107,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#prim" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -140,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              最小生成树
+              选择排序
             
           </span>
         </div>
@@ -903,15 +903,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prim" class="md-nav__link">
-    Prim算法
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kruskal" class="md-nav__link">
-    Kruskal算法
+  <a href="#_1" class="md-nav__link">
+    时间复杂度
   </a>
   
 </li>
@@ -930,60 +923,23 @@
                 
                   
 
-  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/最小生成树.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/ZJU-FrankGu/MKDocs/edit/master/docs/选择排序.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>最小生成树</h1>
+  <h1>选择排序</h1>
 
 <blockquote>
-<p>12-01智云
-<a href="https://www.bilibili.com/video/BV1Eb41177d1/?spm_id_from=333.337.search-card.all.click&amp;vd_source=7dcda248e16142ad5a30747514b5afce">一个很好的视频</a>
-感觉这部分不像是重点？只讲了Prim没讲Kruskal,另外why带我们参观了办公室~</p>
+<p>感觉why没讲啊，反正不是我翘课太多的问题。
+哦原来是堆排序的弟弟，那确实没什么好讲的。</p>
 </blockquote>
-<p><strong>生成树:</strong> 对连通图进行遍历，过程中所经过的边和顶点的组合可看做是一棵树.&gt;
-1.  包含连通图中所有的顶点；
-2.  任意两顶点之间有且仅有一条通路；</p>
-<p><strong>最小生成树：</strong> <span class="arithmatex">\(\sum w(u,v)\)</span> 最小的生成树T</p>
-<blockquote>
-<p>如果T是图G(V,E)的最小生成树，那么在T上砍一刀，分成 <span class="arithmatex">\(T_1,T_2\)</span>，则他们分别是子图 <span class="arithmatex">\(G_1,G_2\)</span> 的最小生成树。</p>
-</blockquote>
-<h3 id="prim">Prim算法</h3>
-<blockquote>
-<p>Prim是每次选择距离<strong>最近</strong>的点，然后加进来；
-关键词：<strong>贪心</strong></p>
-</blockquote>
-<p>伪代码：
-<div class="highlight"><pre><span></span><code>初始化：
-    任选一个顶点s作为root dis(root) = 0;
-    对剩余顶点： dis[v] = inf;
-    result = 0; // 存放最小生成树的长度
-Prim():
-    rest = V;
-    while (!rest.empty()):
-        找出dis最小的节点cur；
-        result = result + dis[cur];
-        rest = rest - {cur} // 把cur从剩余节点移除（可以建个标记数组什么的）
-        for each node v adjacent to cur： 
-            dis[v] = min(dis[v],w[cur,v])
-</code></pre></div></p>
-<p>这个找最小dis节点很像<a href="../Dijkstra%20%E7%AE%97%E6%B3%95/">Dijkstra 算法</a>，也可以通过暴力，二叉堆，Fib维护。
-* 暴力 O(n^2+m)
-* 二叉堆  O((n+m)logn)
-* Fib堆 O(nlogn+m)</p>
-<h3 id="kruskal">Kruskal算法</h3>
-<blockquote>
-<p>老师上课没提应该不会考
-关键词：<strong>扯下来，连回去</strong>
-Kruskal的发音跟扯下来很像，好暴力嘿嘿</p>
-</blockquote>
-<p>先把所有边拿出来排个序，然后按权值一条一条连回去（贪心），如果构成了环，就把连的那根跳过，用下一根连回去.
-上面这个判断过程一般用<a href="../%E5%B9%B6%E6%9F%A5%E9%9B%86/">并查集</a>来维护，最后可以得到<span class="arithmatex">\(O(mlogm)\)</span>的Kruskal算法。</p>
-<blockquote>
-<p>Kruskal的常数比Prim要小，一般都用Kruskal，在稠密图上，Prim的复杂度会优于Kruskal，但不一定比Kruskal跑的快。</p>
-</blockquote>
+<p>扫一遍所有的数，拿出最大的放最后；再扫一遍剩下的数字，拿出最大的放最后……
+不断的这样，最后就是从小到大的数。</p>
+<h3 id="_1">时间复杂度</h3>
+<p><span class="arithmatex">\(O(n^2)\)</span>。
+这里可以联想一下<a href="../%E5%A0%86/">堆</a>。堆排序的思想跟这个很像，都是找出剩下数字中最大的依次放最后，但选择排序是直接扫了一遍，要O(n)的时间复杂度，而堆排序借助堆这一数据结构，巧妙的把这个操作优化到了O(logn)，于是堆排序可以达到O(nlogn)。</p>
 
 
 

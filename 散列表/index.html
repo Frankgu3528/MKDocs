@@ -1194,11 +1194,15 @@
 <p>更好的hash函数帮助分布更加简单均匀，来极可能减少冲突。</p>
 </blockquote>
 <h3 id="_4">除同余：</h3>
-<p><span class="arithmatex">\(h(k) = k ~mod ~p\)</span></p>
-<p>p一般取不大于表长（内存插槽的个数）的最大素数</p>
+<p>$$
+h(k) = k ~mod ~p
+$$
+p一般取不大于表长（内存插槽的个数）的最大素数</p>
 <h3 id="_5">乘同余</h3>
-<p><span class="arithmatex">\(h(k) = (A*k~mod~2^w) &gt;&gt; (w-r)\)</span></p>
-<p>位运算很快。</p>
+<p>$$
+h(k) = (A*k~mod~2^w) &gt;&gt; (w-r)
+$$
+位运算很快。</p>
 <hr />
 <h2 id="_6">冲突处理办法</h2>
 <h3 id="_7">拉链法（分离链接法）</h3>
@@ -1220,7 +1224,7 @@
 <blockquote>
 <p>这东西似乎书上没有，考研题里看到的。</p>
 </blockquote>
-<p>分为成功ASL和失败ASL，看下面的例题：</p>
+<p>分为成功ASL和失败ASL，看下面的例题：（这个再字应该删掉）</p>
 <p><img alt="image.png" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221231234130.png" /></p>
 <p>散列表大小为10，依次代入数据，建好散列表为：
 <img alt="image.png" src="https://frank-first.oss-cn-hangzhou.aliyuncs.com/images/20221231234225.png" />
